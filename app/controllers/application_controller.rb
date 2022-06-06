@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 #ログインしたら
 
   def after_sign_in_path_for(resource)
-    about_path
+    post_animals_path
   end
 
 #ログアウトしたら

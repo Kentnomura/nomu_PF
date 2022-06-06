@@ -8,7 +8,10 @@
     <ul class="navbar-nav mr-auto">
       <!--ログイン後-->
      <% if user_signed_in? %>
-      <li>
+      <li class="ml-5">
+        <%= link_to "投稿はこちら", new_post_animal_path, class:"text-dark h5" %>
+      </li>
+      <li class="ml-3">
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"text-dark h5" %>
       </li>
     <% else %>
