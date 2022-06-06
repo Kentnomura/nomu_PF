@@ -2,6 +2,13 @@
   <div class="row mt-5">
     <h2 class="col-2 head-line title_h2 bg-secondary text-white text-center">投稿</h2>
   </div>
+
+  <div class="row pt-3">
+    <div class="col offset-3">
+      <!--エラーメッセージ機能-->
+      <%= render "layouts/error", ofj: @post_animal %>
+    </div>
+  </div>
 <!--投稿機能-->
 <div class="container offset-1">
   <%= form_with model: @post_animal, method: :post, class: "form-horizontal" do |f| %>
@@ -18,12 +25,13 @@
     <!--投稿したい内容-->
     <div class="row pb-3">
       <div class="col-2">
-        <%= f.label :投稿したい内容 %>
+        <%= f.label :動物の説明 %>
       </div>
       <div class="col-6">
-        <%= f.text_area :caption, class: 'form-control',size: "10x5", :placeholder => "写真の動物の説明" %>
+        <%= f.text_area :caption, class: 'form-control',size: "10x5", :placeholder => "写真の動物の説明(最大140)" %>
       </div>
     </div>
+    <!--投稿ボタン-->
     <div class="row">
       <div class="offset-3">
         <%= f.submit "  投稿  ", class: 'btn btn-success btn-lg' %>

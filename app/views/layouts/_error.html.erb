@@ -1,0 +1,8 @@
+<% if ofj.errors.any? %>
+  <%= ofj.errors.count %>件のエラーが発生しました!
+  <ul>
+    <% ofj.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>

@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    attributes:
+      post_animal:
+        caption: 説明文
+        image: 画像
+    errors:
+      models:
+        post_animal:
+          format: "%{attribute}: %{message}"
+          blank: は、必要です！
