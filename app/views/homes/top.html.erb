@@ -1,1 +1,17 @@
-<h1>Top</h1>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-11 col-sm-10 col-lg-9 col-xl-6">
+      <h1 class="text-center display-3 mt-3">Animalズー</h1>
+      <p class="mt-5 text-center">Animalズーは、動物好きさん達が集まるのSNSサイトです</p>
+
+      <div class="btn-wrapper col-10 mx-auto mt-5">
+        <div class="row">
+          <%= link_to "ログイン", new_user_session_path, class:"btn btn-warning btn-sm btn-block mb-5 sign_in" %>
+        </div>
+        <div class="row">
+          <%= link_to "新規登録", new_user_registration_path, class:"btn btn-primary btn-sm btn-block mb-3 sign_up" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
