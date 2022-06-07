@@ -1,1 +1,15 @@
 <h2>投稿一覧</h2>
+<table>
+  <% @post_animals.each do |post_animal| %>
+  <tr>
+      <td>
+          <%= link_to post_animal_path(post_animal.id) do %>
+            <%= image_tag post_animal.get_image %>
+          <% end %>
+      </td>
+      <td>
+          <%= post_animal.caption %>
+      </td>
+  </tr>
+  <% end %>
+</table>

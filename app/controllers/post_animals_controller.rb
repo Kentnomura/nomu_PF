@@ -15,9 +15,20 @@ class PostAnimalsController < ApplicationController
   end
 
   def index
+    @post_animals = PostAnimal.all
   end
 
   def show
+    @post_animal = PostAnimal.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def destroy
+    @post_animal = PostAnimal.find(params[:id])
+    @post_animal.destroy
+    redirect_to post_animals_path
   end
 
   private
