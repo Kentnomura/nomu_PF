@@ -4,7 +4,28 @@
   </div>
   <!-- ユーザーの詳細 -->
   <div>
-    <h3><%= @user.name %></h3>
+    <%= @user.name %>
+    <%= image_tag @user.get_profile_image, size: '150x150' %>
+  </div>
 
+  <!-- ユーザーの投稿一覧 -->
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    <% @post_animals.each do |post_animal| %>
+      <div class="col mb-2">
+        <div class="card h-100" style="width: 18rem;">
+          <%= link_to post_animal_path(post_animal.id) do %>
+            <%= image_tag post_animal.get_image, class: "card-img-top", size: "200x200" %>
+            <h5 class="card-title text-dark ml-3">
+              <%= post_animal.user.name %>
+            </h5>
+            <div class="card-body text-dark">
+              <%= post_animal.caption %><br>
+              <%= post_animal.created_at.strftime('%Y/%m/%d') %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
+
