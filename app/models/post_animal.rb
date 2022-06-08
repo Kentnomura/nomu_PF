@@ -5,7 +5,7 @@ class PostAnimal < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_one_attached :image
 
-  validates :caption, presence: true, length: {maximum: 140}
+  validates :caption, presence: true, length: {maximum: 40}
   validates :image, presence: true
 
   def get_image
@@ -15,6 +15,7 @@ class PostAnimal < ApplicationRecord
       'no_image.jpg'
     end
   end
+  
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
