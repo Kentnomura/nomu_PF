@@ -15,14 +15,11 @@ class PostAnimalsController < ApplicationController
   end
 
   def index
-    @post_animals = PostAnimal.all
+    @post_animals = PostAnimal.all.order(created_at: :desc)
   end
 
   def show
     @post_animal = PostAnimal.find(params[:id])
-  end
-
-  def edit
   end
 
   def destroy

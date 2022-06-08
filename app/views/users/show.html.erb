@@ -2,30 +2,55 @@
   <div class="row mt-2">
     <h2 class="col-3 head-line title_h2 bg-secondary text-white text-center">アカウント詳細</h2>
   </div>
+</div>
   <!-- ユーザーの詳細 -->
-  <div>
-    <%= @user.name %>
-    <%= image_tag @user.get_profile_image, size: '150x150' %>
-  </div>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= image_tag @user.get_profile_image, size: '200x200' %>
+      <table class="table">
+        <tbody>
+          <tr></tr>
+          <tr>
+            <th><p class="h2">名前</p></th>
+            <th>
+              <p class="h2"><%= @user.name %></p>
+            </th>
+          </tr>
+        <% if @user.id == current_user.id %>
+          <tr>
+            <th>
+              <%= link_to "編集", edit_user_path(current_user.id), class: "btn btn-info" %>
+            </th>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
 
-  <!-- ユーザーの投稿一覧 -->
-<div class="row row-cols-1 row-cols-md-4 g-4">
-    <% @post_animals.each do |post_animal| %>
-      <div class="col mb-2">
-        <div class="card h-100" style="width: 18rem;">
-          <%= link_to post_animal_path(post_animal.id) do %>
-            <%= image_tag post_animal.get_image, class: "card-img-top", size: "200x200" %>
-            <h5 class="card-title text-dark ml-3">
-              <%= post_animal.user.name %>
-            </h5>
-            <div class="card-body text-dark">
-              <%= post_animal.caption %><br>
-              <%= post_animal.created_at.strftime('%Y/%m/%d') %>
+    <!-- ユーザーの投稿一覧 -->
+
+    <div class="col-md-8 offset-1">
+      <h2 class="col-4 offset-3 head-line title_h2 bg-dark text-white text-center">過去の投稿</h2>
+      <div class="row row-cols-1 row-cols-md-2 g-2">
+        <% @post_animals.each do |post_animal| %>
+          <div class="col mb-2">
+            <div class="card h-100" style="width: 18rem;">
+              <%= link_to post_animal_path(post_animal.id) do %>
+                <%= image_tag post_animal.get_image, class: "card-img-top", size: "200x200" %>
+                <h5 class="card-title text-dark ml-3">
+                  <%= post_animal.user.name %>
+                </h5>
+                <div class="card-body text-dark">
+                  <%= post_animal.caption %><br>
+                  <%= post_animal.created_at.strftime('%Y/%m/%d') %>
+                </div>
+              <% end %>
             </div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
 

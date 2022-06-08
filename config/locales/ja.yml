@@ -4,6 +4,9 @@ ja:
       post_animal:
         caption: 説明文
         image: 画像
+      user:
+        name: 名前
+        image: 画像
     errors:
       models:
         post_animal:
