@@ -16,6 +16,7 @@ class PostAnimalsController < ApplicationController
 
   def index
     @post_animals = PostAnimal.all.order(created_at: :desc)
+    @post_animals = PostAnimal.all.page(params[:page]).per(8)
   end
 
   def show
