@@ -12,17 +12,21 @@
         <tbody>
           <tr></tr>
           <tr>
-            <th><p class="h3">ニックネーム</p></th>
+            <th><p class="h3 text-center">ニックネーム</p></th>
+          </tr>
+          <tr>
             <th>
-              <p class="h2 text-left"><%= @user.name %></p>
+              <p class="h2 text-center"><%= @user.name %></p>
             </th>
           </tr>
         <% if @user.id == current_user.id %>
-          <tr>
-            <th class="text text-center">
-              <%= link_to "プロフィール編集", edit_user_path(current_user.id), class: "btn btn-info" %>
-            </th>
-          </tr>
+          <% if @user.name != "guestuser" %>
+            <tr>
+              <th class="text text-center">
+                <%= link_to "プロフィール編集", edit_user_path(current_user.id), class: "btn btn-info" %>
+              </th>
+            </tr>
+          <% end %>
           <tr>
             <th>新規投稿はこちらから</th>
             <th>

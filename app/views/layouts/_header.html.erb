@@ -1,5 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-  <a class="navbar-brand" href="/"><h2 class="text-white">Animalズー</h2></a>
+  <!--ログイン後はuserの詳細ページ-->
+  <% if user_signed_in? %>
+    <%= link_to user_path(current_user.id) do %>
+      <h2 class="text-white">Animalズー</h2>
+    <% end %>
+  <% else %>
+    <!--ログイン前はtopページ-->
+    <%= link_to root_path do %>
+      <h2 class="text-white">Animalズー</h2>
+    <% end %>
+  <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

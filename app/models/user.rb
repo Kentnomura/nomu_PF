@@ -17,6 +17,16 @@ class User < ApplicationRecord
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
 
+  #sessions_controller.rbで記述したguestメソッドを定義
+  def self.guest
+    #存在する場合には、そのデータを返す・存在しない場合は、新規作成する
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
+
+
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end

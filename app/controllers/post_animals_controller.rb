@@ -15,8 +15,8 @@ class PostAnimalsController < ApplicationController
   end
 
   def index
-    @post_animals = PostAnimal.all.order(created_at: :desc)
-    @post_animals = PostAnimal.all.page(params[:page]).per(8)
+    #投稿順変えるための記述と、ページネーションの記述が一緒になっている
+    @post_animals = PostAnimal.all.order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def show
