@@ -3,22 +3,32 @@
     <h2 class="col-2 head-line title_h2 bg-secondary text-white text-center">投稿詳細</h2>
   </div>
   <div class="row">
-    <div class="col-5">
+    <div class="col-6">
       <%= link_to user_path(@post_animal.user_id) do %>
         <%= image_tag @post_animal.get_image,size:"400x400" %>
       <% end %>
     </div>
     <!--詳細-->
-    <div>
+    <div class="col-6">
+    <table class="table table-borderless">
       <tbody>
         <tr>
+          <td>
+            <%= image_tag @post_animal.user.get_profile_image, size: '200x200', class:"rounded-circle" %>
+          </td>
+          <td></td>
           <td>
             <%= link_to user_path(@post_animal.user_id) do %>
               <p class="h2 text-dark"><%= @post_animal.user.name %></p>
             <% end %>
           </td>
+        </tr>
+        <tr>
           <td><p class="h2 mt-4"><%= @post_animal.caption %></p></td>
           <td><%= @post_animal.created_at.strftime('%Y/%m/%d') %></td>
+          <td>
+            <%= render "favorites/btn", post_animal: @post_animal %>
+          </td>
           <td>
             <% if@post_animal.user_id == current_user.id %>
               <%= link_to "削除", post_animal_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
@@ -26,6 +36,7 @@
           </td>
         </tr>
       </tbody>
+    </table>
     </div>
   </div>
 </div>

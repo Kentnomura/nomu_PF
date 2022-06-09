@@ -28,6 +28,11 @@
             </tr>
           <% end %>
           <tr>
+            <th class="text text-center">
+              <p><%=link_to"お気に入り記事",favorites_user_path(@user), class: "btn btn-info" %></p>
+            </th>
+          </tr>
+          <tr>
             <th>新規投稿はこちらから</th>
             <th>
                <%= link_to new_post_animal_path do %>
@@ -56,6 +61,7 @@
                 <div class="card-body text-dark">
                   <%= post_animal.caption %><br>
                   <%= post_animal.created_at.strftime('%Y/%m/%d') %>
+                  <%= render "favorites/btn", post_animal: post_animal %>
                 </div>
               <% end %>
             </div>
