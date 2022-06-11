@@ -29,7 +29,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:post_animal_id)
     @favorite_post_animals = PostAnimal.find(favorites)
-    @post_animals = @user.favorites.page(params[:page])
+    
+    @post_animals = PostAnimal.page(params[:page]).per(8)
   end
 
   private

@@ -21,6 +21,7 @@ class PostAnimalsController < ApplicationController
 
   def show
     @post_animal = PostAnimal.find(params[:id])
+    @animal_comment = AnimalComment.new
   end
 
   def destroy

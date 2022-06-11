@@ -12,36 +12,59 @@
     <div class="col-6">
     <table class="table table-borderless">
       <tbody>
-        <tr>
-          <td>
-            <%= image_tag @post_animal.user.get_profile_image, size: '200x200', class:"rounded-circle" %>
-          </td>
-          <td>
-            <%= link_to user_path(@post_animal.user_id) do %>
-              <p class="h1 text-dark"><%= @post_animal.user.name %></p>
-            <% end %>
-            <p class="mt-4"><%= render "favorites/btn", post_animal: @post_animal %></p>
-            <p><% if current_user != @post_animal.user %>
-                <% if current_user.name != "guestuser" %>
-                  <% if current_user.following?(@post_animal.user) %>
-                    <%= link_to "フォロー外す", user_relationships_path(@post_animal.user), method: :delete %>
-                  <% else %>
-                    <%= link_to "フォローする", user_relationships_path(@post_animal.user), method: :post %>
+        <thead>
+          <tr>
+            <td>
+              <%= image_tag @post_animal.user.get_profile_image, size: '200x200', class:"rounded-circle" %>
+            </td>
+            <td>
+              <%= link_to user_path(@post_animal.user_id) do %>
+                <p class="h1 text-dark"><%= @post_animal.user.name %></p>
+              <% end %>
+              <p class="mt-4"><%= render "favorites/btn", post_animal: @post_animal %></p>
+              <p><% if current_user != @post_animal.user %>
+                  <% if current_user.name != "guestuser" %>
+                    <% if current_user.following?(@post_animal.user) %>
+                      <%= link_to "フォロー外す", user_relationships_path(@post_animal.user), method: :delete %>
+                    <% else %>
+                      <%= link_to "フォローする", user_relationships_path(@post_animal.user), method: :post %>
+                    <% end %>
                   <% end %>
                 <% end %>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td><p class="h2 mt-4"><%= @post_animal.caption %></p></td>
+            <td><%= @post_animal.created_at.strftime('%Y/%m/%d') %></td>
+            <td>
+              <% if@post_animal.user_id == current_user.id %>
+                <%= link_to "削除", post_animal_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
               <% end %>
-            </p>
-          </td>
-        </tr>
-        <tr>
-          <td><p class="h2 mt-4"><%= @post_animal.caption %></p></td>
-          <td><%= @post_animal.created_at.strftime('%Y/%m/%d') %></td>
-          <td>
-            <% if@post_animal.user_id == current_user.id %>
-              <%= link_to "削除", post_animal_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              コメント件数：<%= @post_animal.animal_comments.count %><br>
+            <% @post_animal.animal_comments.each do |animal_comment| %>
+                <%= image_tag animal_comment.user.get_profile_image, size: '100x100' %>
+                <%= animal_comment.user.name %>
+                <%= animal_comment.comment %>
+                <%= animal_comment.created_at.strftime('%Y/%m/%d') %>
+              </td>
             <% end %>
-          </td>
-        </tr>
+          </tr>
+          <tr>
+            <td>
+              <%= form_with model: [@post_animal, @animal_comment] do |f| %>
+                <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+                <%= f.submit "送信する" %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
       </tbody>
     </table>
     </div>
