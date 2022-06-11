@@ -24,10 +24,12 @@ class UsersController < ApplicationController
     end
   end
 
+  #いいね一覧
   def favorites
     @user = User.find(params[:id])
-    favorites= Favorite.where(user_id: @user.id).pluck(:post_animal_id)
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_animal_id)
     @favorite_post_animals = PostAnimal.find(favorites)
+    @post_animals = @user.favorites.page(params[:page])
   end
 
   private

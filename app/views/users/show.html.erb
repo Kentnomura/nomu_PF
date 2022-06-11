@@ -19,7 +19,9 @@
               <p class="h2 text-center"><%= @user.name %></p>
             </th>
           </tr>
+        <!--もしuserがログイン中なら-->
         <% if @user.id == current_user.id %>
+        　<!--なおかつ、userがgesutではなければ-->
           <% if @user.name != "guestuser" %>
             <tr>
               <th class="text text-center">
@@ -29,9 +31,19 @@
           <% end %>
           <tr>
             <th class="text text-center">
-              <p><%=link_to"お気に入り記事",favorites_user_path(@user), class: "btn btn-info" %></p>
+              <p><%=link_to"いいね一覧",favorites_user_path(@user), class: "btn btn-info" %></p>
             </th>
           </tr>
+          <% if @user.name != "guestuser" %>
+            <tr>
+              <th>
+                <%= link_to "フォロー数:", user_followings_path(@user) %>
+                <%= @user.followings.count %><br>
+                <%= link_to "フォロワー数:", user_followers_path(@user) %>
+                <%= @user.followers.count %>
+              </th>
+            </tr>
+          <% end %>
           <tr>
             <th>新規投稿はこちらから</th>
             <th>
