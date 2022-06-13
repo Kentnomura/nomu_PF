@@ -8,6 +8,8 @@
         <%= image_tag @post_animal.get_image,size:"400x400" %>
       <% end %>
     </div>
+
+
     <!--詳細-->
     <div class="col-6">
     <table class="table table-borderless">
@@ -44,25 +46,47 @@
             </td>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>
-              コメント件数：<%= @post_animal.animal_comments.count %><br>
-            <% @post_animal.animal_comments.each do |animal_comment| %>
-                <%= image_tag animal_comment.user.get_profile_image, size: '100x100' %>
-                <%= animal_comment.user.name %>
-                <%= animal_comment.comment %>
-                <%= animal_comment.created_at.strftime('%Y/%m/%d') %>
-              </td>
-            <% end %>
+      </table>
+      <table class="table text-center">
+        <thead class="table">
+          <tr class="text-center">
+            <th width="20%">
+              <p class="text mb-3">コメント件数：<%= @post_animal.animal_comments.count %></p>
+            </th>
+            <th width="10%"></th>
+            <th width="50%"></th>
+            <th width="20%"></th>
           </tr>
+        </thead>
+        <tbody>
+          <% @post_animal.animal_comments.each do |animal_comment| %>
+            <tr>
+              <th>
+                <%= image_tag animal_comment.user.get_profile_image, size: '100x100' %>
+              </th>
+              <th>
+                <%= animal_comment.user.name %>
+              </th>
+              <th>
+                <%= animal_comment.comment %>
+              </th>
+              <th>
+                <%= animal_comment.created_at.strftime('%Y/%m/%d') %>
+                <% if animal_comment.user == current_user %>
+                  <%= link_to "削除", post_animal_animal_comment_path(@post_animal, animal_comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+                <% end %>
+              </th>
+            </tr>
+          <% end %>
           <tr>
-            <td>
-              <%= form_with model: [@post_animal, @animal_comment] do |f| %>
-                <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-                <%= f.submit "送信する" %>
-              <% end %>
-            </td>
+            <%= form_with model: [@post_animal, @animal_comment] do |f| %>
+              <th>
+                <%= f.text_area :comment, rows: '4', placeholder: "コメントをここに" %>
+              </th>
+              <th>
+                <%= f.submit "送信する", class:"btn btn-outline-primary mt-5" %>
+              </th>
+            <% end %>
           </tr>
         </tbody>
       </tbody>

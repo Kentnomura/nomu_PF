@@ -19,7 +19,20 @@
               <p class="h2 text-center"><%= @user.name %></p>
             </th>
           </tr>
-        <!--もしuserがログイン中なら-->
+          <% if @user.name != "guestuser" %>
+            <tr>
+              <th class="text text-center">
+                <%= link_to user_followings_path(@user), class:"btn btn-info" do %>
+                  フォロー数:<%= @user.followings.count %>
+                <% end %><br>
+                <%= link_to  user_followers_path(@user), class:"btn btn-info mt-3" do %>
+                  フォロワー数:<%= @user.followers.count %>
+                <% end %>
+              </th>
+            </tr>
+          <% end %>
+
+        <!--もしuserでログイン中なら-->
         <% if @user.id == current_user.id %>
         　<!--なおかつ、userがgesutではなければ-->
           <% if @user.name != "guestuser" %>
@@ -34,16 +47,6 @@
               <p><%=link_to"いいね一覧",favorites_user_path(@user), class: "btn btn-info" %></p>
             </th>
           </tr>
-          <% if @user.name != "guestuser" %>
-            <tr>
-              <th>
-                <%= link_to "フォロー数:", user_followings_path(@user) %>
-                <%= @user.followings.count %><br>
-                <%= link_to "フォロワー数:", user_followers_path(@user) %>
-                <%= @user.followers.count %>
-              </th>
-            </tr>
-          <% end %>
           <tr>
             <th>新規投稿はこちらから</th>
             <th>
@@ -84,7 +87,7 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row mt-3">
   <div class="offset-5">
     <div class="text-center">
       <%= paginate @post_animals %>
