@@ -53,20 +53,17 @@
         <thead class="table">
           <tr class="text-center">
             <th width="20%">
-              <p class="text mb-3">コメント件数：<%= @post_animal.animal_comments.count %></p>
+              <p class="animal-comments-counter text mb-3">
+                <%= render "animal_comments/counter", post_animal: @post_animal %>
+              </p>
             </th>
             <th width="10%"></th>
             <th width="50%"></th>
             <th width="20%"></th>
           </tr>
         </thead>
-        <tbody>
-          <div class="comments_area">
-            <%= render "animal_comments/index", post_animal: @post_animal %>
-          </div>
-          <tr>
-            <%= render "animal_comments/comment", post_animal: @post_animal, animal_comment: @animal_comment %>
-          </tr>
+        <tbody class="comments_area">
+          <%= render "animal_comments/index", post_animal: @post_animal, animal_comment: @animal_comment %>
         </tbody>
       </tbody>
     </table>
