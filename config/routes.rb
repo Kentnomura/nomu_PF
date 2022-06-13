@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :animal_comments, only: [:create, :destroy]
   end
-  resources :users, only: [:show, :index, :edit, :update]do
+  resources :users, only: [:show, :edit, :update]do
      member do
       get :favorites
     end

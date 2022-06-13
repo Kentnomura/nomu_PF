@@ -23,7 +23,9 @@
               <%= link_to user_path(@post_animal.user_id) do %>
                 <p class="h1 text-dark"><%= @post_animal.user.name %></p>
               <% end %>
-              <p class="mt-4"><%= render "favorites/btn", post_animal: @post_animal %></p>
+              <div class="favorites_buttons_<%= @post_animal.id %>">
+                <%= render "favorites/btn", post_animal: @post_animal %>
+              </div>
               <p><% if current_user != @post_animal.user %>
                   <% if current_user.name != "guestuser" %>
                     <% if current_user.following?(@post_animal.user) %>
@@ -59,34 +61,11 @@
           </tr>
         </thead>
         <tbody>
-          <% @post_animal.animal_comments.each do |animal_comment| %>
-            <tr>
-              <th>
-                <%= image_tag animal_comment.user.get_profile_image, size: '100x100' %>
-              </th>
-              <th>
-                <%= animal_comment.user.name %>
-              </th>
-              <th>
-                <%= animal_comment.comment %>
-              </th>
-              <th>
-                <%= animal_comment.created_at.strftime('%Y/%m/%d') %>
-                <% if animal_comment.user == current_user %>
-                  <%= link_to "削除", post_animal_animal_comment_path(@post_animal, animal_comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
-                <% end %>
-              </th>
-            </tr>
-          <% end %>
+          <div class="comments_area">
+            <%= render "animal_comments/index", post_animal: @post_animal %>
+          </div>
           <tr>
-            <%= form_with model: [@post_animal, @animal_comment] do |f| %>
-              <th>
-                <%= f.text_area :comment, rows: '4', placeholder: "コメントをここに" %>
-              </th>
-              <th>
-                <%= f.submit "送信する", class:"btn btn-outline-primary mt-5" %>
-              </th>
-            <% end %>
+            <%= render "animal_comments/comment", post_animal: @post_animal, animal_comment: @animal_comment %>
           </tr>
         </tbody>
       </tbody>
