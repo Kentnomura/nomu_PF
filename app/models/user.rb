@@ -50,7 +50,13 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  #サーチ機能
   def self.looks(search, word)
     User.where("name LIKE?","%#{word}%")
   end
+
+  def active_for_authentication?
+    super && (is_valid == true)
+  end
+
 end

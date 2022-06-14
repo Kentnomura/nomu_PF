@@ -19,9 +19,9 @@
               <%= image_tag @post_animal.user.get_profile_image, size: '200x200', class:"rounded-circle" %>
             </td>
             <td>
-
+              <%= link_to admins_user_path(@post_animal.user_id) do %>
                 <p class="h1 text-dark"><%= @post_animal.user.name %></p>
-
+              <% end %>
             </td>
           </tr>
           <tr>

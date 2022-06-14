@@ -29,8 +29,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:post_animal_id)
     @favorite_post_animals = PostAnimal.find(favorites)
-    
+
     @post_animals = PostAnimal.page(params[:page]).per(8)
+  end
+
+  def withdrawal
+    @user = User.find(params[:id])
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @user.update(is_valid: false)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
   end
 
   private
