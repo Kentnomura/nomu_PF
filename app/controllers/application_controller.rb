@@ -6,8 +6,14 @@ class ApplicationController < ActionController::Base
 #ログインしたら
 
   def after_sign_in_path_for(resource)
-    post_animals_path
+    case resource
+    when Admin
+      admins_post_animals_path
+    when
+      post_animals_path
+    end
   end
+
 
 #ログアウトしたら
 

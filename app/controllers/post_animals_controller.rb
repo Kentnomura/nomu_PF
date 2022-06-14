@@ -27,7 +27,7 @@ class PostAnimalsController < ApplicationController
   def destroy
     @post_animal = PostAnimal.find(params[:id])
     @post_animal.destroy
-    redirect_to post_animal_path
+    redirect_to post_animals_path
   end
 
   private

@@ -23,4 +23,9 @@ Rails.application.routes.draw do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
+
+  namespace :admins do
+    resources :post_animals, only: [:index, :show, :destroy]
+    resources :users, only: [:show, :destroy]
+  end
 end
