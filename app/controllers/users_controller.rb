@@ -2,8 +2,6 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:edit]
 
-  def index
-  end
 
   def show
     @user = User.find(params[:id])
@@ -18,6 +16,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
+      flash[:notice] = "アカウント情報を更新しました"
       redirect_to user_path(current_user.id)
     else
       render "edit"
@@ -29,7 +28,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:post_animal_id)
     @favorite_post_animals = PostAnimal.find(favorites)
-
     @post_animals = PostAnimal.page(params[:page]).per(8)
   end
 
@@ -38,7 +36,7 @@ class UsersController < ApplicationController
     # is_validカラムをfalesに変更することにより削除フラグを立てる
     @user.update(is_valid: false)
     reset_session
-    flash[:notice] = "退会処理を実行いたしました"
+    flash[:notice] = "退会処理しました"
     redirect_to root_path
   end
 

@@ -8,6 +8,7 @@ class PostAnimalsController < ApplicationController
     @post_animal = PostAnimal.new(post_animal_params)
     @post_animal.user_id = current_user.id
     if @post_animal.save
+      flash[:notice] = "投稿しました"
       redirect_to post_animals_path
     else
       render "new"
@@ -27,6 +28,7 @@ class PostAnimalsController < ApplicationController
   def destroy
     @post_animal = PostAnimal.find(params[:id])
     @post_animal.destroy
+    flash[:notice] = "投稿を削除しました"
     redirect_to post_animals_path
   end
 
