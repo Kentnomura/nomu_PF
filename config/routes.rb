@@ -31,6 +31,6 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :post_animals, only: [:index, :show, :destroy]
-    resources :users, only: [:show, :destroy]
+    resources :users, only: [:show, :edit, :index, :update]
   end
 end

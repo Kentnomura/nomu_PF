@@ -33,6 +33,13 @@
       <li type="button", class="ml-3 btn btn-outline-dark">
         <%= link_to "退会", unsubscribe_path(current_user.id), class:"text-white h5" %>
       </li>
+      <li>
+        <!--search機能-->
+        <%= form_with url: search_path, local: true, method: :get, class: "d-flex ml-5" do |f| %>
+        <%= f.search_field :word, placeholder:"ニックネームで検索", class: "form-control me-2"%>
+        <%= f.submit "検索", class: "btn btn-outline-success ml-1" %>
+      <% end %>
+      </li>
     <!--管理者なら-->
     <% elsif admin_signed_in? %>
       <li type="button", class="ml-5 btn btn-outline-dark">
@@ -40,6 +47,9 @@
       </li>
       <li type="button", class="ml-3 btn btn-outline-dark">
         <%= link_to "投稿一覧", admins_post_animals_path, class:"text-white h5" %>
+      </li>
+      <li type="button", class="ml-3 btn btn-outline-dark">
+        <%= link_to "アカウント一覧", admins_users_path, class:"text-white h5" %>
       </li>
     <% else %>
     <!--ログイン前-->
@@ -54,11 +64,6 @@
       </li>
     <% end %>
     </ul>
-    <!--サーチ機能-->
 
-    <%= form_with url: search_path, local: true, method: :get, class: "d-flex ml-5" do |f| %>
-      <%= f.search_field :word, placeholder:"ニックネームで検索", class: "form-control me-2"%>
-      <%= f.submit "検索", class: "btn btn-outline-success ml-1" %>
-    <% end %>
   </div>
 </nav>

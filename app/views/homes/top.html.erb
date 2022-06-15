@@ -6,19 +6,27 @@
 
       <!--ログインボタン 新規登録ボタン-->
       <div class="btn-wrapper col-10 mx-auto mt-5 ">
-        <div class="row">
-          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
-        </div>
-        <div class="row">
-          <%= link_to  new_user_session_path, class:"btn btn-warning btn-sm btn-block mb-5" do %>
-            <p class="h4">ログイン</p>
-          <% end %>
-        </div>
-        <div class="row">
-          <%= link_to  new_user_registration_path, class:"btn btn-primary btn-sm btn-block mb-3" do %>
-            <p class="h4">新規登録</p>
-          <% end %>
-        </div>
+        <% if user_signed_in? %>
+          <div>
+            <%= link_to user_path(current_user), class:"btn btn-warning btn-sm btn-block mb-5" do %>
+              <p class="h4">マイページ</p>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="row">
+            <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+          </div>
+          <div class="row">
+            <%= link_to  new_user_session_path, class:"btn btn-warning btn-sm btn-block mb-5" do %>
+              <p class="h4">ログイン</p>
+            <% end %>
+          </div>
+          <div class="row">
+            <%= link_to  new_user_registration_path, class:"btn btn-primary btn-sm btn-block mb-3" do %>
+              <p class="h4">新規登録</p>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

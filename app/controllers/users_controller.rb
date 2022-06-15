@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
   def withdrawal
     @user = User.find(params[:id])
-    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    # is_validカラムをfalesに変更することにより削除フラグを立てる
     @user.update(is_valid: false)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"

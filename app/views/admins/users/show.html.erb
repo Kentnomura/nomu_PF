@@ -8,21 +8,23 @@
   <div class="row">
     <div class="col-md-3">
       <%= image_tag @user.get_profile_image, size: '200x200', class:"rounded-circle" %>
-      <table class="table table-borderless">
-        <tbody>
-          <tr></tr>
-          <tr>
-            <th><p class="h3 text-center">ニックネーム</p></th>
-          </tr>
-          <tr>
-            <th>
-              <p class="h2 text-center"><%= @user.name %></p>
-            </th>
-          </tr>
-
-
-
-        </tbody>
+        <table class="table table-borderless">
+          <tbody>
+            <tr></tr>
+            <tr>
+              <th><p class="h3 text-center">ニックネーム</p></th>
+            </tr>
+            <tr>
+              <th>
+                <p class="h2 text-center"><%= @user.name %></p>
+              </th>
+            </tr>
+            <tr>
+              <th>
+                <%= link_to "編集", edit_admins_user_path(@user) %>
+              </th>
+            </tr>
+          </tbody>
       </table>
     </div>
 
