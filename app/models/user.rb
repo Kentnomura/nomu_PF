@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :post_animals,dependent: :destroy
   has_many :animal_comments,dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorite_animals, through: :favorites,source: :post_animal
 
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy

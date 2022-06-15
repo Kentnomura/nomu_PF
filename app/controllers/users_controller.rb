@@ -26,9 +26,7 @@ class UsersController < ApplicationController
   #いいね一覧
   def favorites
     @user = User.find(params[:id])
-    favorites = Favorite.where(user_id: @user.id).pluck(:post_animal_id)
-    @favorite_post_animals = PostAnimal.find(favorites)
-    @post_animals = PostAnimal.page(params[:page]).per(8)
+    @favorite_post_animals = @user.favorite_animals.page(params[:page]).per(8)
   end
 
   def withdrawal

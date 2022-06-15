@@ -30,7 +30,9 @@ Rails.application.routes.draw do
   patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
 
   namespace :admins do
-    resources :post_animals, only: [:index, :show, :destroy]
+    resources :post_animals, only: [:index, :show, :destroy]do
+      resources :animal_comments, only: [:destroy]
+    end
     resources :users, only: [:show, :edit, :index, :update]
   end
 end
