@@ -2,12 +2,12 @@
   <!--ログイン後はuserの詳細ページ-->
   <% if user_signed_in? %>
     <%= link_to user_path(current_user.id) do %>
-      <h2 class="text-white">Animalズー</h2>
+      <h2 class="font_heder_rogo text-white">AnimalZoo</h2>
     <% end %>
   <% else %>
     <!--ログイン前はtopページ-->
     <%= link_to root_path do %>
-      <h2 class="text-white">Animalズー</h2>
+      <h2 class="font_heder_rogo text-white">AnimalZoo</h2>
     <% end %>
   <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,7 +62,7 @@
         <%= link_to "ログイン", new_user_session_path, class:"text-white h5" %>
       </li>
       <li type="button", class="ml-3 btn btn-outline-dark">
-        <%= link_to "Animal ズーとは", about_path, class:"text-white h5" %>
+        <%= link_to "Animal Zooとは", about_path, class:"text-white h5" %>
       </li>
     <% end %>
     </ul>

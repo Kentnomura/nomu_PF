@@ -1,2 +1,2 @@
 $(".animal-comments-counter").html("<%= j(render "animal_comments/counter", post_animal: @comment.post_animal) %>");
-$(".comments_area").html("<%= j(render "animal_comments/index", post_animal: @comment.post_animal, animal_comment: @animal_comment) %>");
+$("#comments_area").html("<%= j(render "animal_comments/index", post_animal: @comment.post_animal, animal_comment: @animal_comment) %>");

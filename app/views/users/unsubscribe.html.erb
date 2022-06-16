@@ -4,13 +4,13 @@
   </div>
   <div class="row mt-5 mb-3">
    <div class="col text-center">
-    <p>
+    <p class="text-white h3 user_unsubscribe">
       退会されますと、全てのサービスがご利用いただけなくなります。<br>
       再度ご利用をいただく場合には、新規登録のお手続きが必要になります。<br>
       本当に退会してよろしいですか？
     </p>
-    <%= link_to "退会する", withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" }, class:"btn btn-primary" %>
-    <%= link_to "戻る", user_path(current_user), class:"btn btn-primary" %>
+    <%= link_to "退会する", withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" }, class:"btn btn-primary btn-lg" %>
+    <%= link_to "戻る", user_path(current_user), class:"btn btn-primary btn-lg" %>
    </div>
   </div>
  </div>

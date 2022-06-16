@@ -15,17 +15,17 @@
     <!--画像投稿機能-->
     <div class="row pb-4 pt-3">
       <div class="col-2">
-        <%= f.label :動物の画像 %>
+        <%= f.label :動物の画像, class:"text-white h3" %>
       </div>
       <div class="col-6" %>
-        <%= f.file_field :image, accept: "image/*" %>
+        <%= f.file_field :image, class:"text-white" ,accept: "image/*" %>
       </div>
     </div>
 
     <!--投稿したい内容-->
     <div class="row pb-3">
       <div class="col-2">
-        <%= f.label :動物の説明 %>
+        <%= f.label :動物の説明, class:"text-white h3" %>
       </div>
       <div class="col-6">
         <%= f.text_area :caption, class: 'form-control', :placeholder => "写真の動物の説明(最大40)" %>
