@@ -1,26 +1,26 @@
 <div class='container'>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
-      <h2>新規会員登録</h2>
-      <h3 class="mt-3 mb-3 pb-1">こちらから登録してください</h3>
+      <h2 class="text-white">新規登録</h2>
+      <h3 class="mt-3 mb-3 pb-1 text-white">こちらから登録してください</h3>
       <%= form_with model: @user, url: user_registration_path do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <!--名前-->
         <div class="field">
-          <%= f.label :name,"ニックネーム" %><br>
+          <%= f.label :name,"ニックネーム", class:"text-white" %><br>
           <%= f.text_field :name %>
         </div>
 
         <!--メールアドレス-->
-        <div class="field">
-          <%= f.label :email,"メールアドレス" %><br />
+        <div class="field mt-3">
+          <%= f.label :email,"メールアドレス", class:"text-white" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
 
         <!--パスワード-->
-        <div class="field">
-          <%= f.label :password,"パスワード"%>
+        <div class="field mt-3 text-white">
+          <%= f.label :password,"パスワード" %>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> 文字以上)</em>
           <% end %><br />
@@ -28,18 +28,19 @@
         </div>
 
         <!--パスワード(確認用)-->
-        <div class="field">
+        <div class="field mt-3 text-white">
           <%= f.label :password_confirmation,"パスワード(確認)" %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
 
         <!--登録ボタン-->
-        <div class="actions">
-          <%= f.submit "新規登録" ,class: 'btn btn-sm btn-primary'%>
+        <div class="actions mt-3">
+          <%= f.submit "新規登録" ,class: 'btn btn-primary'%>
         </div>
       <% end %>
-
-      <%= render "devise/shared/links" %>
+      <div class="text-white mt-3">
+        <%= render "devise/shared/links" %>
+      </div>
     </div>
   </div>
 </div>

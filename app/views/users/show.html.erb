@@ -1,22 +1,21 @@
 <div class="container">
-  <div class="row mt-2">
+  <div class="row mt-2 offset-1">
     <h2 class="col-3 head-line title_h2 bg-secondary text-white text-center">アカウント詳細</h2>
   </div>
 </div>
   <!-- ユーザーの詳細 -->
-<div class="container px-5 px-sm-0">
+<div class="container mt-3 px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-3">
       <%= image_tag @user.get_profile_image, size: '200x200', class:"rounded-circle" %>
       <table class="table table-borderless">
         <tbody>
-          <tr></tr>
           <tr>
-            <th><p class="h3 text-center">ニックネーム</p></th>
+            <th><p class="h3 text-center text-white mt-3">ニックネーム</p></th>
           </tr>
           <tr>
             <th>
-              <p class="h2 text-center"><%= @user.name %></p>
+              <p class="h1 text-center text-white"><%= @user.name %></p>
             </th>
           </tr>
           <% if @user.name != "guestuser" %>
@@ -47,11 +46,13 @@
             </th>
           </tr>
           <tr>
-            <th>新規投稿はこちらから</th>
             <th>
-               <%= link_to new_post_animal_path do %>
-                 <button type="button" class="btn btn-primary rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
-               <% end %>
+              <p class="text-white">
+                新規投稿はこちらから
+                  <%= link_to new_post_animal_path do %>
+                    <button type="button" class="btn btn-primary rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
+                  <% end %>
+               </p>
             </th>
           </tr>
         <% end %>
