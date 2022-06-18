@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row mt-3">
+    <h2 class="col-3 head-line title_h2 bg-secondary text-white text-center">アカウント一覧</h2>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-lg-8 offset-2">
+      <table class="table text-center">
+        <thead class="table-danger">
+          <tr class="text-center">
+            <th>
+              user画像
+            </th>
+            <th>
+              ニックネーム
+            </th>
+            <th>
+              フォロー数
+            </th>
+            <th>
+              フォロワー数
+            </th>
+            <th>
+              アカウント状況
+            </th>
+          </tr>
+        </thead>
+        <% @users.each do |user| %>
+          <tbody class="table-primary">
+            <tr>
+              <th>
+                <%= image_tag user.get_profile_image, size: '100x100' %>
+              </th>
+              <th>
+                <%= link_to admins_user_path(user) do %>
+                  <%= user.name %>
+                <% end %>
+              </th>
+              <th>
+                フォロー数: <%= user.followings.count %>
+              </th>
+              <th>
+                フォロワー数: <%= user.followers.count %>
+              </th>
+              <th>
+                <% if user.is_valid == false %>
+                  <p class="text-secondary mt-3"><strong>退会</strong></p>
+                <%else%>
+          　       <p class="text-success"><strong>有効</strong></p>
+                <%end%>
+              </th>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="offset-5">
+    <div class="text-center">
+      <%= paginate @users %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+      <h2>ログイン</h2>
+      <h3 class="mt-3 mb-3 pb-1">管理者ログイン</h3>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      　<!--名前-->
+        <div class="field">
+          <%= f.label :name,"ニックネーム" %><br />
+          <%= f.text_field :name, autofocus: true, class: "name" %>
+        </div>
+        <!--パスワード-->
+        <div class="field">
+          <%= f.label :password,"パスワード(6文字以上)" %><br />
+          <%= f.password_field :password, autocomplete: "off", class: "password" %>
+        </div>
+        <!--ログインボタン-->
+        <div class="actions">
+          <%= f.submit "ログイン" ,class: 'btn btn-sm btn-primary'%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
