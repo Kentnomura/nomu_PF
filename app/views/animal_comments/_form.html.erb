@@ -1,10 +1,9 @@
-<tr>
-  <%= form_with(model:[post_animal, animal_comment], local: false) do |f| %>
-    <th>
-      <%= f.text_area :comment, rows: '4', placeholder: "コメントをここに(最大40)" %>
-    </th>
-    <th>
-      <%= f.submit "送信する", class:"btn btn-light mt-5" %>
-    </th>
-  <% end %>
-</tr>
+<%= form_with(model:[post_animal, animal_comment], local: false) do |f| %>
+  <div>
+    <%= f.text_area :comment, rows:'3',placeholder: "コメントをここに(最大40)", class: "w-50 comment-textarea" %>
+  <%= f.submit "送信する", class: "btn btn-base-1 mt-20 pull-right" %>
+  </div>
+<% end %>
+
+
+

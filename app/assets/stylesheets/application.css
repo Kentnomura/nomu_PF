@@ -15,7 +15,8 @@
  */
 body{
  background-image: url('africa.jpg');
- background-size: cover
+ background-size: cover;
+ word-break: break-all;
 }
 
 .footerFixed{

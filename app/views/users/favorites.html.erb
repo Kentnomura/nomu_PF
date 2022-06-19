@@ -3,6 +3,7 @@
     <h2 class="col-3 head-line title_h2 bg-secondary text-white text-center">いいね一覧</h2>
   </div>
 
+  <% if @favorite_post_animals.exists? %>
   <!--いいね一覧-->
   <div class="row row-cols-1 row-cols-md-4 g-4">
     <% @favorite_post_animals.each do |post_animal|%>
@@ -25,6 +26,13 @@
       </div>
     <% end %>
   </div>
+  <% else %>
+    <div>
+      <h2>
+        まだいいねしていません
+      </h2>
+    </div>
+  <% end %>
 
   <div class="row">
     <div class="offset-5">

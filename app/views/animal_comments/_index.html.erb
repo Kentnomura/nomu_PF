@@ -6,15 +6,16 @@
     <th>
       <%= animal_comment.user.name %>
     </th>
-    <th>
+    <th class="word-break">
       <%= animal_comment.comment %>
     </th>
     <th>
       <%= animal_comment.created_at.strftime('%Y/%m/%d') %>
+    </th>
+    <th>
         <% if animal_comment.user == current_user %>
           <%= link_to "削除", post_animal_animal_comment_path(post_animal, animal_comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
         <% end %>
     </th>
   </tr>
 <% end %>
-    
