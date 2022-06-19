@@ -1,4 +1,6 @@
 class AnimalCommentsController < ApplicationController
+  before_action :authenticate_user!
+
 
   def create
     @post_animal = PostAnimal.find(params[:post_animal_id])

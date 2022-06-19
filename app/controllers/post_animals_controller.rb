@@ -1,4 +1,6 @@
 class PostAnimalsController < ApplicationController
+  before_action :authenticate_user!
+
 
   def new
     @post_animal = PostAnimal.new
