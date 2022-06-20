@@ -20,6 +20,16 @@
               <p class="h1 text-center text-white"><%= @user.name %></p>
             </th>
           </tr>
+          <% if @user != current_user %>
+            <tr>
+              <th class="btn btn-info w-100 ">
+                <%= render "relationships/follow", post_animal: @user %>
+              </th>
+            </tr>
+          <% end %>
+        <!--もしuserでログイン中なら-->
+        <% if @user.id == current_user.id %>
+          <!--なおかつ、userがgesutではなければ-->
           <% if @user.name != "guestuser" %>
             <tr>
               <th class="text text-center">
@@ -31,23 +41,17 @@
                 <% end %>
               </th>
             </tr>
-          <% end %>
-          
-        <!--もしuserでログイン中なら-->
-        <% if @user.id == current_user.id %>
-        　<!--なおかつ、userがgesutではなければ-->
-          <% if @user.name != "guestuser" %>
             <tr>
               <th class="text text-center">
                 <%= link_to "アカウント編集", edit_user_path(current_user.id), class: "btn btn-info w-100" %>
               </th>
             </tr>
+            <tr>
+              <th class="text text-center">
+                <p><%=link_to"いいね一覧",favorites_user_path(@user), class: "btn btn-info w-100" %></p>
+              </th>
+            </tr>
           <% end %>
-          <tr>
-            <th class="text text-center">
-              <p><%=link_to"いいね一覧",favorites_user_path(@user), class: "btn btn-info w-100" %></p>
-            </th>
-          </tr>
           <tr>
             <th>
               <p class="text-white">
