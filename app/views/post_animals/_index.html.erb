@@ -1,0 +1,21 @@
+<% post_animals.each do |post_animal| %>
+  <div class="col mb-2">
+    <div class="card h-100" style="width: 18rem;">
+      <%= link_to post_animal_path(post_animal.id) do %>  <!--投稿をリンク化-->
+        <%= image_tag post_animal.get_image, class: "card-img-top", size: "200x200" %>
+          <h5 class="card-title text-dark ml-3">
+            <%= post_animal.user.name %>
+          </h5>
+          <div class="card-body text-dark">
+            <p class="text text-dark">
+              <%= post_animal.caption %>
+            </p>
+            <div id="favorites_buttons_<%= post_animal.id %>">
+              <%= render "favorites/btn", post_animal: post_animal %>
+            </div>
+          <%= post_animal.created_at.strftime('%Y/%m/%d') %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
