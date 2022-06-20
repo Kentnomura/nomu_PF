@@ -1,21 +1,24 @@
-<div class='container'>
-  <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
-      <h2>ログイン</h2>
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="box2 bg-white">
+  <div class="box-inner">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <h1>ログイン</h1>
       　<!--名前-->
-        <div class="field">
-          <%= f.label :name,"ニックネーム" %><br />
-          <%= f.text_field :name, autofocus: true, class: "name" %>
+        <div class="box-name">
+        <%= f.label :name, "ニックネーム" %><br />
+        <%= f.text_field :name, autofocus: true, :placeholder => "ニックネーム" %>
         </div>
         <!--パスワード-->
-        <div class="field">
-          <%= f.label :password,"パスワード(6文字以上)" %><br />
-          <%= f.password_field :password, autocomplete: "off", class: "password" %>
+        <div class="box-password">
+          <div class="a-row">
+            <div class="column-left">
+              <%= f.label :password, "パスワード" %>
+            </div>
+          </div>
+          <%= f.password_field :password, autocomplete: "current-password" %>
         </div>
         <!--ログインボタン-->
-        <div class="actions">
-          <%= f.submit "ログイン" ,class: 'btn btn-sm btn-primary'%>
+        <div class="box-login">
+          <%= f.submit "ログイン" %>
         </div>
       <% end %>
     </div>
