@@ -6,7 +6,9 @@
   <div class="row pt-3">
     <div class="col offset-3">
       <!--エラーメッセージ機能-->
-      <%= render "layouts/errors", ofj: @post_animal %>
+      <div class="text text-white bg-danger w-25">
+        <%= render "layouts/errors", ofj: @post_animal %>
+      </div>
     </div>
   </div>
 <!--投稿機能-->

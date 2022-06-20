@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   #いいね一覧
   def favorites
     @user = User.find(params[:id])
-    @favorite_post_animals = @user.favorite_animals.page(params[:page]).per(8)
+    @favorite_post_animals = @user.favorite_animals.page(params[:page]).per(8).order(created_at: :desc)
   end
 
   def withdrawal

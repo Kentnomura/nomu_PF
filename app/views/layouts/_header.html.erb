@@ -45,13 +45,13 @@
     <!--管理者なら-->
     <% elsif admin_signed_in? %>
       <li type="button", class="ml-5 btn btn-outline-dark">
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"text-white h5" %>
-      </li>
-      <li type="button", class="ml-3 btn btn-outline-dark">
         <%= link_to "投稿一覧", admins_post_animals_path, class:"text-white h5" %>
       </li>
       <li type="button", class="ml-3 btn btn-outline-dark">
         <%= link_to "アカウント一覧", admins_users_path, class:"text-white h5" %>
+      </li>
+      <li type="button", class="ml-3 btn btn-outline-dark">
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"text-white h5" %>
       </li>
     <% else %>
     <!--ログイン前-->
