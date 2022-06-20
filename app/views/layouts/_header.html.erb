@@ -30,11 +30,6 @@
       <li type="button", class="ml-3 btn btn-outline-dark">
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"text-white h5" %>
       </li>
-      <% if current_user.name != "guestuser" %>
-        <li type="button", class="ml-3 btn btn-outline-dark">
-          <%= link_to "退会", unsubscribe_path(current_user.id), class:"text-white h5" %>
-        </li>
-      <% end %>
       <li>
         <!--search機能-->
         <%= form_with url: search_path, local: true, method: :get, class: "d-flex ml-5" do |f| %>
