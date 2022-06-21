@@ -1,7 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class= "col-lg-11 col-md-10 bg-danger">
+      <%= render "devise/shared/error_messages", resource: resource %>
+    </div>
+  </div>
+</div>
 <div class="box1 bg-white">
   <div class="box-inner">
     <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
     <h1>新規登録</h1>
     <div class="box-name">
       <%= f.label :name, "ニックネーム" %><br />
