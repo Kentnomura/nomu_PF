@@ -1,9 +1,9 @@
 <div class="container bg-light">
   <div class="row mt-2">
-    <h2 class="col-2 head-line title_h2 bg-secondary text-white text-center">投稿詳細</h2>
+    <h2 class="col-lg-2 col-md-4 col-sm-4 head-line title_h2 bg-secondary text-white text-center">投稿詳細</h2>
   </div>
   <div class="row">
-    <div class="col-6">
+    <div class="col-lg-6 col-md-12">
       <%= link_to user_path(@post_animal.user_id) do %>
         <%= image_tag @post_animal.get_image,size:"400x400" %>
       <% end %>
@@ -18,7 +18,7 @@
 
 
     <!--詳細-->
-    <div class="col-6">
+    <div class="col-lg-6 col-md-12">
       <table class="table table-borderless">
         <thead class="table text-center">
           <tr class="text-center bg-dark text-white">
