@@ -19,6 +19,10 @@ body{
  word-break: break-all;
 }
 
+.toumei{
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
 .footerFixed{
   min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
   position: relative;/* ←相対位置 */

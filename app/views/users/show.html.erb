@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row mt-2 offset-1">
-    <h2 class="col-3 head-line title_h2 bg-secondary text-white text-center">アカウント詳細</h2>
+    <h2 class="col-xl-12　col-sm-12 head-line title_h2 bg-secondary text-white text-center">アカウント詳細</h2>
   </div>
 </div>
   <!-- ユーザーの詳細 -->
 <div class="container mt-3 px-5 px-sm-0">
   <div class="row">
-    <div class="col-3">
+    <div class="col-md-3 col-sm-12">
       <%= image_tag @user.get_profile_image, size: '200x200', class:"rounded-circle" %>
       <table class="table table-borderless">
         <tbody>
@@ -56,9 +56,9 @@
             <th>
               <p class="text-white">
                 新規投稿はこちらから
-                  <%= link_to new_post_animal_path do %>
-                    <button type="button" class="btn btn-primary rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
-                  <% end %>
+                <%= link_to new_post_animal_path do %>
+                  <button type="button" class="btn btn-primary rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
+                <% end %>
                </p>
             </th>
           </tr>
@@ -68,9 +68,9 @@
     </div>
 
     <!-- ユーザーの投稿一覧 -->
-    <div class="col-md-8 offset-1">
-      <h2 class="col-4 offset-3 head-line title_h2 bg-dark text-white text-center">過去の投稿</h2>
-      <div class="row row-cols-1 row-cols-md-2 g-2">
+    <div class="col-md-8 col-sm-12 offset-1">
+      <h2 class="col-lg-11 col-sm-12 head-line title_h2 bg-dark text-white text-center">過去の投稿</h2>
+      <div class="row">
         <%= render "post_animals/index", post_animals: @post_animals %>
       </div>
     </div>
