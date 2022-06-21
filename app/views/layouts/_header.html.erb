@@ -2,12 +2,12 @@
   <!--ログイン後はuserの詳細ページ-->
   <% if user_signed_in? %>
     <%= link_to user_path(current_user.id) do %>
-      <h2 class="font_heder_rogo text-white">AnimalZoo</h2>
+      <h2 class="font_heder_rogo text-dark mr-5">AnimalZoo</h2>
     <% end %>
   <% else %>
     <!--ログイン前はtopページ-->
     <%= link_to root_path do %>
-      <h2 class="font_heder_rogo text-white">AnimalZoo</h2>
+      <h2 class="font_heder_rogo text-dark mr-5">AnimalZoo</h2>
     <% end %>
   <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,49 +18,46 @@
     <ul class="navbar-nav mr-auto">
       <!--ログイン後-->
      <% if user_signed_in? %>
-      <li type="button", class="ml-5 btn btn-outline-dark">
-        <%= link_to "マイページ", user_path(current_user.id), class:"text-white h5" %>
+      <li class="nav-item active mr-3">
+        <%= link_to "マイページ", user_path(current_user.id), class:"text-dark h5" %>
       </li>
-      <li type="button", class="ml-3 btn btn-outline-dark">
-        <%= link_to "投稿一覧", post_animals_path, class:"text-white h5" %>
+      <li class="nav-item active mr-3">
+        <%= link_to "投稿一覧", post_animals_path, class:"text-dark h5" %>
       </li>
-      <li type="button", class="ml-3 btn btn-outline-dark">
-        <%= link_to "投稿はこちら", new_post_animal_path, class:"text-white h5" %>
+      <li class="nav-item active mr-3">
+        <%= link_to "投稿はこちら", new_post_animal_path, class:"text-dark h5" %>
       </li>
-      <li type="button", class="ml-3 btn btn-outline-dark">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"text-white h5" %>
+      <li class="nav-item active">
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"text-dark h5" %>
       </li>
-      <li>
-        <!--search機能-->
-        <%= form_with url: search_path, local: true, method: :get, class: "d-flex ml-5" do |f| %>
-        <%= f.search_field :word, placeholder:"ニックネームで検索", class: "form-control me-2"%>
-        <%= f.submit "検索", class: "btn btn-outline-success ml-1" %>
+    </ul>
+    <!--search機能-->
+        <%= form_with url: search_path, local: true, method: :get, class: "form-inline my-2 my-lg-0" do |f| %>
+        <%= f.search_field :word, placeholder:"ニックネームで検索", class: "form-control mr-sm-2"%>
+        <%= f.submit "検索", class: "btn btn-outline-success my-2 my-sm-0" %>
       <% end %>
-      </li>
     <!--管理者なら-->
     <% elsif admin_signed_in? %>
-      <li type="button", class="ml-5 btn btn-outline-dark">
-        <%= link_to "投稿一覧", admins_post_animals_path, class:"text-white h5" %>
+      <li class="nav-item active mr-3">
+        <%= link_to "投稿一覧", admins_post_animals_path, class:"text-dark h5" %>
       </li>
-      <li type="button", class="ml-3 btn btn-outline-dark">
-        <%= link_to "アカウント一覧", admins_users_path, class:"text-white h5" %>
+      <li class="nav-item active mr-3">
+        <%= link_to "アカウント一覧", admins_users_path, class:"text-dark h5" %>
       </li>
-      <li type="button", class="ml-3 btn btn-outline-dark">
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"text-white h5" %>
+      <li class="nav-item active">
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"text-dark h5" %>
       </li>
     <% else %>
     <!--ログイン前-->
-      <li type="button", class="ml-5 btn btn-outline-dark">
-        <%= link_to "新規登録", new_user_registration_path, class:"text-white h5" %>
+      <li class="nav-item active mr-3">
+        <%= link_to "新規登録", new_user_registration_path, class:"text-dark h5" %>
       </li>
-      <li type="button", class="ml-3 btn btn-outline-dark">
-        <%= link_to "ログイン", new_user_session_path, class:"text-white h5" %>
+      <li class="nav-item active mr-3">
+        <%= link_to "ログイン", new_user_session_path, class:"text-dark h5" %>
       </li>
-      <li type="button", class="ml-3 btn btn-outline-dark">
-        <%= link_to "Animal Zooとは", about_path, class:"text-white h5" %>
+      <li class="nav-item active">
+        <%= link_to "Animal Zooとは", about_path, class:"text-dark h5" %>
       </li>
     <% end %>
-    </ul>
-
   </div>
 </nav>
