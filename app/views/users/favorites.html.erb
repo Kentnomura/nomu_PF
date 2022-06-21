@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row mt-2">
-    <h2 class="col-3 head-line title_h2 bg-secondary text-white text-center">いいね一覧</h2>
+    <h2 class="col-md-4 col-sm-10 head-line title_h2 bg-secondary text-white text-center">いいね一覧</h2>
   </div>
 
   <% if @favorite_post_animals.exists? %>
   <!--いいね一覧-->
-  <div class="row row-cols-1 row-cols-md-4 g-4">
+  <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2">
     <% @favorite_post_animals.each do |post_animal|%>
       <div class="col mb-2">
         <div class="card h-100" style="width: 18rem;">
@@ -34,11 +34,6 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="offset-5">
-      <div class="text-center">
-        <%= paginate @favorite_post_animals %>
-      </div>
-    </div>
-  </div>
+<div class="row d-flex justify-content-center">
+  <%= paginate @favorite_post_animals %>
 </div>
