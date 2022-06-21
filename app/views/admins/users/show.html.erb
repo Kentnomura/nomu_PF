@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row mt-2">
-    <h2 class="col-3 head-line title_h2 bg-secondary text-white text-center">アカウント詳細</h2>
+    <h2 class="col-xl-12　col-sm-12 head-line title_h2 bg-secondary text-white text-center">アカウント詳細</h2>
   </div>
 </div>
   <!-- ユーザーの詳細 -->
-<div class="container px-5 px-sm-0">
+<div class="container mt-3 px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 col-sm-11">
       <%= image_tag @user.get_profile_image, size: '200x200', class:"rounded-circle" %>
         <table class="table table-borderless">
           <tbody>
@@ -20,18 +20,19 @@
               </th>
             </tr>
             <tr>
-              <th class="btn btn-lg bg-white  offset-3">
-                <%= link_to "退会機能", edit_admins_user_path(@user) %>
+              <th class="text text-dark ">
+                <%= link_to "退会させますか？", edit_admins_user_path(@user),class:"btn bg-danger w-100" %>
               </th>
             </tr>
           </tbody>
       </table>
     </div>
 
+    <div class="col-1"></div>
     <!-- ユーザーの投稿一覧 -->
-    <div class="col-md-8 offset-1">
-      <h2 class="col-4 offset-3 head-line title_h2 bg-dark text-white text-center">過去の投稿</h2>
-      <div class="row row-cols-1 row-cols-md-2 g-2">
+    <div class="col-md-8 col-sm-11">
+      <h2 class="col-lg-11 col-sm-12 head-line title_h2 bg-dark text-white text-center">過去の投稿</h2>
+      <div class="row">
         <% @post_animals.each do |post_animal| %>
           <div class="col mb-2">
             <div class="card h-100" style="width: 18rem;">
@@ -53,12 +54,7 @@
   </div>
 </div>
 <!--ページネーション-->
-<div class="row mt-3">
-  <div class="offset-5">
-    <div class="text-center">
-      <%= paginate @post_animals %>
-    </div>
-  </div>
+<div class="row mt-3 user_show_img">
+  <%= paginate @post_animals %>
 </div>
-
 
