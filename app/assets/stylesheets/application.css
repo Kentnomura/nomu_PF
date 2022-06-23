@@ -16,7 +16,6 @@
 body{
  background-image: url('africa.jpg');
  background-size: cover;
- word-break: break-all;
 }
 
 .toumei{
@@ -39,5 +38,9 @@ footer {
 
 .font_heder_rogo{
   font-family: 'Pangolin', cursive;
+}
+
+.word-break{
+  word-break: break-all;
 }
 

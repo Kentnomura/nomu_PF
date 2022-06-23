@@ -6,78 +6,69 @@
   <!-- ユーザーの詳細 -->
 <div class="container mt-3 px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-3 col-sm-11">
-      <div class="d-flex justify-content-center">
-        <%= image_tag @user.get_profile_image, size: '200x200', class:"rounded-circle" %>
+    <div class="col-lg-3 col-md-12 col-sm-12">
+      <div class="container user_show_box mb-4">
+        <div class="row">
+          <div class="mx-auto">
+            <%= image_tag @user.get_profile_image, size: '200x200', class:"rounded-circle" %>
+          </div>
+          <table class="table">
+            <tbody>
+              <tr></tr>
+              <tr>
+                <th>ニックネーム</th>
+                <th>
+                  <%= @user.name %>
+                </th>
+              </tr>
+              <% if @user != current_user %>
+                <tr>
+                  <th class="btn btn-info w-100 ">
+                    <%= render "relationships/follow", post_animal: @user %>
+                  </th>
+                </tr>
+              <% end %>
+            <!--もしuserでログイン中なら-->
+            <% if @user.id == current_user.id %>
+              <!--なおかつ、userがgesutではなければ-->
+              <% if @user.name != "guestuser" %>
+                <tr>
+                  <th class="text text-center">
+                    <%= link_to user_followings_path(@user), class: "btn btn-outline-dark" do %>
+                      <i class="fas fa-user-alt"></i>フォロー:<%= @user.followings.count %>
+                    <% end %>
+                  </th>
+                  <th class="text text-center">
+                    <%= link_to  user_followers_path(@user), class: "btn btn-outline-dark" do %>
+                      <i class="fas fa-user-alt"></i>フォロワー:<%= @user.followers.count %>
+                    <% end %>
+                  </th>
+                </tr>
+              <% end %>
+            <% end %>
+            </tbody>
+          </table>
+            <%= link_to edit_user_path(current_user.id), class: "btn btn-outline-dark btn-block" do %>
+              <i class="fas fa-user-edit"></i>
+            <% end %>
+            <%=link_to favorites_user_path(@user), class: "btn btn-outline-dark btn-block" do %>
+              <i class="fas fa-heart"></i>
+            <% end %>
+            <div class="mx-auto pt-1">
+              <%= link_to new_post_animal_path do %>
+                <button type="button" class="btn btn-primary rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
+              <% end %>
+            </div>
+        </div>
       </div>
-      <table class="table table-borderless">
-        <tbody>
-          <tr>
-            <th>
-              <p class="h3 text-center text-white mt-3">ニックネーム</p>
-            </th>
-          </tr>
-          <tr>
-            <th>
-              <p class="h1 text-center text-white"><%= @user.name %></p>
-            </th>
-          </tr>
-          <% if @user != current_user %>
-            <tr>
-              <th class="btn btn-info w-100 ">
-                <%= render "relationships/follow", post_animal: @user %>
-              </th>
-            </tr>
-          <% end %>
-        <!--もしuserでログイン中なら-->
-        <% if @user.id == current_user.id %>
-          <!--なおかつ、userがgesutではなければ-->
-          <% if @user.name != "guestuser" %>
-            <tr>
-              <th class="text text-center">
-                <%= link_to user_followings_path(@user), class:"btn btn-info w-100" do %>
-                  <i class="fas fa-user-alt"></i>フォロー数:<%= @user.followings.count %>
-                <% end %><br>
-                <%= link_to  user_followers_path(@user), class:"btn btn-info mt-3 w-100" do %>
-                  <i class="fas fa-user-alt"></i>フォロワー数:<%= @user.followers.count %>
-                <% end %>
-              </th>
-            </tr>
-            <tr>
-              <th class="text text-center">
-                <%= link_to edit_user_path(current_user.id), class: "btn btn-info w-100" do %>
-                  <i class="fas fa-user-edit"></i>アカウント編集
-                <% end %>
-              </th>
-            </tr>
-            <tr>
-              <th class="text text-center">
-                <%=link_to favorites_user_path(@user), class: "btn btn-info w-100" do %>
-                  <i class="fas fa-heart"></i>いいね一覧
-                <% end %>
-              </th>
-            </tr>
-          <% end %>
-          <tr>
-            <th>
-              <p class="text-white">
-                新規投稿はこちらから
-                <%= link_to new_post_animal_path do %>
-                  <button type="button" class="btn btn-primary rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
-                <% end %>
-               </p>
-            </th>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
     </div>
-    <div class="col-1"></div>
+    <div class="col-lg-1"></div>
+
 
     <!-- ユーザーの投稿一覧 -->
-    <div class="col-md-8 col-sm-11">
+    <div class="col-lg-8 col-md-12 col-sm-12">
       <h2 class="col-lg-11 col-sm-12 head-line title_h2 bg-dark text-white text-center">過去の投稿</h2>
-      <div class="row">
+      <div class="row mx-auto">
         <%= render "post_animals/index", post_animals: @post_animals %>
       </div>
     </div>

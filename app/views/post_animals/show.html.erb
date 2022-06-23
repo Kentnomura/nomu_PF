@@ -7,8 +7,8 @@
       <%= link_to user_path(@post_animal.user_id) do %>
         <%= image_tag @post_animal.get_image,size:"400x400" %>
       <% end %>
-      <h4 class="col-4 head-line title_h4 bg-secondary text-white text-center">投稿内容</h4>
-      <p class="h2  text-white bg-dark text-center"><%= @post_animal.caption %></p>
+      <h4 class="col-4 head-line title_h4 bg-secondary text-white text-center mt-1">投稿内容</h4>
+      <p class="h2  text-white bg-dark text-center word-break"><%= @post_animal.caption %></p>
       <div class="mb-3">
         <% if@post_animal.user_id == current_user.id %>
           <%= link_to post_animal_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" do %>
