@@ -33,6 +33,6 @@ Rails.application.routes.draw do
     resources :post_animals, only: [:index, :show, :destroy]do
       resources :animal_comments, only: [:destroy]
     end
-    resources :users, only: [:show, :edit, :index, :update]
+    resources :users, only: [:show, :edit, :index, :update, :destroy]
   end
 end

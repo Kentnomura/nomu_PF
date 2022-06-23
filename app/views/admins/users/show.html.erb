@@ -21,11 +21,13 @@
                 <p class="h2 text-center"><%= @user.name %></p>
               </th>
             </tr>
-            <tr>
-              <th class="text text-dark ">
-                <%= link_to "退会？", edit_admins_user_path(@user),class:"btn bg-danger w-100" %>
-              </th>
-            </tr>
+            <% if @user.name != "guestuser" %>
+              <tr>
+                <th class="text text-dark ">
+                  <%= link_to "退会？", edit_admins_user_path(@user),class:"btn bg-danger w-100" %>
+                </th>
+              </tr>
+            <% end %>
           </tbody>
       </table>
     </div>

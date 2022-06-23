@@ -1,6 +1,7 @@
 class Admins::UsersController < ApplicationController
   before_action :authenticate_admin!
 
+
   def show
     @user = User.find(params[:id])
     #投稿順変えるための記述と、ページネーションの記述が一緒になっている
@@ -23,6 +24,13 @@ class Admins::UsersController < ApplicationController
       @users = User.all
       render "edit"
     end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:notice] = "アカウントを削除しました"
+    redirect_to admins_users_path
   end
 
   private

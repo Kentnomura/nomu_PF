@@ -21,6 +21,9 @@
           <%= link_to "戻る", admins_user_path(@user), class:"btn btn-info ml-3" %>
         </div>
       <% end %>
+      <div class="pt-5 pb-3 d-flex justify-content-center">
+        <%= link_to "アカウント削除", admins_user_path(@user), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+      </div>
     </div>
   </div>
 </div>
