@@ -21,13 +21,6 @@
                   <%= @user.name %>
                 </th>
               </tr>
-              <% if @user != current_user %>
-                <tr>
-                  <th class="btn btn-info w-100 ">
-                    <%= render "relationships/follow", post_animal: @user %>
-                  </th>
-                </tr>
-              <% end %>
             <!--もしuserでログイン中なら-->
             <% if @user.id == current_user.id %>
               <!--なおかつ、userがgesutではなければ-->
@@ -48,17 +41,26 @@
             <% end %>
             </tbody>
           </table>
-            <%= link_to edit_user_path(current_user.id), class: "btn btn-outline-dark btn-block" do %>
-              <i class="fas fa-user-edit"></i>
+            <% if @user != current_user %>
+              <%= render "relationships/follow", post_animal: @user %>
             <% end %>
-            <%=link_to favorites_user_path(@user), class: "btn btn-outline-dark btn-block" do %>
-              <i class="fas fa-heart"></i>
-            <% end %>
-            <div class="mx-auto pt-1">
-              <%= link_to new_post_animal_path do %>
-                <button type="button" class="btn btn-primary rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
+            <!--もしuserでログイン中なら-->
+            <% if @user.id == current_user.id %>
+              <!--なおかつ、userがgesutではなければ-->
+              <% if @user.name != "guestuser" %>
+                <%= link_to edit_user_path(current_user.id), class: "btn btn-outline-dark btn-block" do %>
+                  <i class="fas fa-user-edit"></i>
+                <% end %>
+                <%=link_to favorites_user_path(@user), class: "btn btn-outline-dark btn-block" do %>
+                  <i class="fas fa-heart"></i>
+                <% end %>
+                <div class="mx-auto pt-1">
+                  <%= link_to new_post_animal_path, class: "text text-dark" do %>新規投稿
+                    <button type="button" class="btn btn-primary rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
+                  <% end %>
+                </div>
               <% end %>
-            </div>
+            <% end %>
         </div>
       </div>
     </div>
@@ -67,7 +69,7 @@
 
     <!-- ユーザーの投稿一覧 -->
     <div class="col-lg-8 col-md-12 col-sm-12">
-      <h2 class="col-lg-11 col-sm-12 head-line title_h2 bg-dark text-white text-center">過去の投稿</h2>
+      <h2 class="col-lg-12 col-sm-12 head-line title_h2 bg-dark text-white text-center mx-auto">過去の投稿</h2>
       <div class="row mx-auto">
         <%= render "post_animals/index", post_animals: @post_animals %>
       </div>
