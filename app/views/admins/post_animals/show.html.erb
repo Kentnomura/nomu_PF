@@ -70,7 +70,7 @@
           <% @post_animal.animal_comments.each do |animal_comment| %>
             <tr>
               <th>
-                <%= image_tag animal_comment.user.get_profile_image, size: '100x100' %>
+                <%= image_tag animal_comment.user.get_profile_image, size: '100x100', class:"rounded-circle" %>
               </th>
               <th>
                 <%= animal_comment.user.name %>

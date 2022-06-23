@@ -1,6 +1,6 @@
 class Admins::PostAnimalsController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
     @post_animals = PostAnimal.all.order(created_at: :desc).page(params[:page]).per(8)
   end
@@ -13,6 +13,7 @@ class Admins::PostAnimalsController < ApplicationController
   def destroy
     @post_animal = PostAnimal.find(params[:id])
     @post_animal.destroy
+    flash[:notice] = "投稿を削除しました!"
     redirect_to admins_post_animals_path
   end
 end
