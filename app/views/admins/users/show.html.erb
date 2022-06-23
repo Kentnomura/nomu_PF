@@ -6,37 +6,37 @@
   <!-- ユーザーの詳細 -->
 <div class="container mt-3 px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-3 col-sm-11">
-      <div class="d-flex justify-content-center">
-        <%= image_tag @user.get_profile_image, size: '200x200', class:"rounded-circle" %>
-      </div>
-        <table class="table table-borderless">
-          <tbody>
-            <tr></tr>
-            <tr>
-              <th><p class="h3 text-center">ニックネーム</p></th>
-            </tr>
-            <tr>
-              <th>
-                <p class="h2 text-center"><%= @user.name %></p>
-              </th>
-            </tr>
-            <% if @user.name != "guestuser" %>
+    <div class="col-lg-3 col-md-12 col-sm-12">
+      <div class="container user_show_box mb-4">
+        <div class="row pb-1">
+          <div class="mx-auto">
+            <%= image_tag @user.get_profile_image, size: '200x200', class:"rounded-circle" %>
+          </div>
+          <table class="table">
+            <tbody>
+              <tr></tr>
               <tr>
-                <th class="text text-dark ">
-                  <%= link_to "退会？", edit_admins_user_path(@user),class:"btn bg-danger w-100" %>
+                <th>ニックネーム</th>
+                <th>
+                  <%= @user.name %>
                 </th>
               </tr>
+            </tbody>
+          </table>
+          <% if @user.name != "guestuser" %>
+            <%= link_to edit_admins_user_path(@user),class: "btn btn-outline-dark btn-block" do %>
+              <i class="fas fa-user-edit"></i>
             <% end %>
-          </tbody>
-      </table>
+          <% end %>
+        </div>
+      </div>
     </div>
 
     <div class="col-1"></div>
     <!-- ユーザーの投稿一覧 -->
-    <div class="col-md-8 col-sm-11">
-      <h2 class="col-lg-11 col-sm-12 head-line title_h2 bg-dark text-white text-center">過去の投稿</h2>
-      <div class="row">
+   <div class="col-lg-8 col-md-12 col-sm-12">
+      <h2 class="col-lg-12 col-sm-12 head-line title_h2 bg-dark text-white text-center mx-auto">過去の投稿</h2>
+      <div class="row mx-auto">
         <% @post_animals.each do |post_animal| %>
           <div class="col mb-2">
             <div class="card h-100" style="width: 18rem;">

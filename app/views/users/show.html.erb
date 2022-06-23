@@ -21,24 +21,24 @@
                   <%= @user.name %>
                 </th>
               </tr>
-            <!--もしuserでログイン中なら-->
-            <% if @user.id == current_user.id %>
-              <!--なおかつ、userがgesutではなければ-->
-              <% if @user.name != "guestuser" %>
-                <tr>
-                  <th class="text text-center">
-                    <%= link_to user_followings_path(@user), class: "btn btn-outline-dark" do %>
-                      <i class="fas fa-user-alt"></i>フォロー:<%= @user.followings.count %>
-                    <% end %>
-                  </th>
-                  <th class="text text-center">
-                    <%= link_to  user_followers_path(@user), class: "btn btn-outline-dark" do %>
-                      <i class="fas fa-user-alt"></i>フォロワー:<%= @user.followers.count %>
-                    <% end %>
-                  </th>
-                </tr>
+              <!--もしuserでログイン中なら-->
+              <% if @user.id == current_user.id %>
+                <!--なおかつ、userがgesutではなければ-->
+                <% if @user.name != "guestuser" %>
+                  <tr>
+                    <th class="text text-center">
+                      <%= link_to user_followings_path(@user), class: "btn btn-outline-dark" do %>
+                        <i class="fas fa-user-alt"></i>フォロー:<%= @user.followings.count %>
+                      <% end %>
+                    </th>
+                    <th class="text text-center">
+                      <%= link_to  user_followers_path(@user), class: "btn btn-outline-dark" do %>
+                        <i class="fas fa-user-alt"></i>フォロワー:<%= @user.followers.count %>
+                      <% end %>
+                    </th>
+                  </tr>
+                <% end %>
               <% end %>
-            <% end %>
             </tbody>
           </table>
             <% if @user != current_user %>
