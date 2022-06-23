@@ -7,7 +7,9 @@
 <div class="container mt-3 px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3 col-sm-11">
-      <%= image_tag @user.get_profile_image, size: '200x200', class:"rounded-circle" %>
+      <div class="d-flex justify-content-center">
+        <%= image_tag @user.get_profile_image, size: '200x200', class:"rounded-circle" %>
+      </div>
       <table class="table table-borderless">
         <tbody>
           <tr>
@@ -34,21 +36,25 @@
             <tr>
               <th class="text text-center">
                 <%= link_to user_followings_path(@user), class:"btn btn-info w-100" do %>
-                  フォロー数:<%= @user.followings.count %>
+                  <i class="fas fa-user-alt"></i>フォロー数:<%= @user.followings.count %>
                 <% end %><br>
                 <%= link_to  user_followers_path(@user), class:"btn btn-info mt-3 w-100" do %>
-                  フォロワー数:<%= @user.followers.count %>
+                  <i class="fas fa-user-alt"></i>フォロワー数:<%= @user.followers.count %>
                 <% end %>
               </th>
             </tr>
             <tr>
               <th class="text text-center">
-                <%= link_to "アカウント編集", edit_user_path(current_user.id), class: "btn btn-info w-100" %>
+                <%= link_to edit_user_path(current_user.id), class: "btn btn-info w-100" do %>
+                  <i class="fas fa-user-edit"></i>アカウント編集
+                <% end %>
               </th>
             </tr>
             <tr>
               <th class="text text-center">
-                <p><%=link_to"いいね一覧",favorites_user_path(@user), class: "btn btn-info w-100" %></p>
+                <%=link_to favorites_user_path(@user), class: "btn btn-info w-100" do %>
+                  <i class="fas fa-heart"></i>いいね一覧
+                <% end %>
               </th>
             </tr>
           <% end %>

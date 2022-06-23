@@ -33,20 +33,20 @@
               <th>
                 <%= image_tag user.get_profile_image, size: '100x100' %>
               </th>
-              <th>
+              <th class="pt-5">
                 <%= link_to admins_user_path(user) do %>
                   <%= user.name %>
                 <% end %>
               </th>
-              <th>
+              <th class="pt-5">
                 フォロー数: <%= user.followings.count %>
               </th>
-              <th>
+              <th class="pt-5">
                 フォロワー数: <%= user.followers.count %>
               </th>
-              <th>
+              <th class="pt-4">
                 <% if user.is_valid == false %>
-                  <p class="text-secondary mt-3"><strong>退会</strong></p>
+                  <p class="text-secondary"><strong>退会</strong></p>
                 <%else%>
           　       <p class="text-success"><strong>有効</strong></p>
                 <%end%>

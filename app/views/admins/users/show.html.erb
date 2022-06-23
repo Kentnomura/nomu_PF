@@ -7,7 +7,9 @@
 <div class="container mt-3 px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3 col-sm-11">
-      <%= image_tag @user.get_profile_image, size: '200x200', class:"rounded-circle" %>
+      <div class="d-flex justify-content-center">
+        <%= image_tag @user.get_profile_image, size: '200x200', class:"rounded-circle" %>
+      </div>
         <table class="table table-borderless">
           <tbody>
             <tr></tr>
