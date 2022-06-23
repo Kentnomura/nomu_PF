@@ -19,16 +19,24 @@
       <!--ログイン後-->
      <% if user_signed_in? %>
       <li class="nav-item active mr-3">
-        <%= link_to "マイページ", user_path(current_user.id), class:"text-dark h5" %>
+        <%= link_to  user_path(current_user.id), class:"text-dark h5" do %>
+         <i class="fas fa-home"></i>マイページ
+        <% end %>
       </li>
       <li class="nav-item active mr-3">
-        <%= link_to "投稿一覧", post_animals_path, class:"text-dark h5" %>
+        <%= link_to post_animals_path, class:"text-dark h5" do %>
+          <i class="fas fa-list"></i>投稿一覧
+        <% end %>
       </li>
       <li class="nav-item active mr-3">
-        <%= link_to "投稿はこちら", new_post_animal_path, class:"text-dark h5" %>
+        <%= link_to  new_post_animal_path, class:"text-dark h5" do %>
+          <i class="fas fa-plus"></i>新規投稿
+        <% end %>
       </li>
       <li class="nav-item active">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"text-dark h5" %>
+        <%= link_to  destroy_user_session_path, class:"text-dark h5", method: :delete do %>
+          <i class="fas fa-sign-out-alt"></i>ログアウト
+        <% end %>
       </li>
     </ul>
     <!--search機能-->
@@ -50,13 +58,19 @@
     <% else %>
     <!--ログイン前-->
       <li class="nav-item active mr-3">
-        <%= link_to "新規登録", new_user_registration_path, class:"text-dark h5" %>
+        <%= link_to new_user_registration_path, class:"text-dark h5" do %>
+          <i class="fas fa-plus"></i>新規投稿
+        <% end %>
       </li>
       <li class="nav-item active mr-3">
-        <%= link_to "ログイン", new_user_session_path, class:"text-dark h5" %>
+        <%= link_to new_user_session_path, class:"text-dark h5" do %>
+          <i class="fas fa-sign-in-alt"></i>ログイン
+        <% end %>
       </li>
       <li class="nav-item active">
-        <%= link_to "Animal Zooとは", about_path, class:"text-dark h5" %>
+        <%= link_to about_path, class:"text-dark h5" do %>
+          <i class="fas fa-exclamation-circle"></i>Animal Zooとは
+        <% end %>
       </li>
     <% end %>
   </div>
