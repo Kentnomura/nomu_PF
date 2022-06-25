@@ -6,7 +6,9 @@
   <!--投稿画像-->
   <div class="row">
     <div class="col-lg-6 col-md-12">
-      <%= image_tag @post_animal.get_image,size:"400x400" %>
+      <%= link_to @post_animal.image, "data-lightbox": @post_animal.image do %>
+        <%= image_tag @post_animal.get_image,size:"400x400" %>
+      <% end %>
       <h4 class="col-4 head-line title_h4 bg-secondary text-white text-center">投稿内容</h4>
       <p class="h2  text-white bg-dark text-center"><%= @post_animal.caption %></p>
       <div class="mb-3">
