@@ -4,9 +4,10 @@
   </div>
   <div class="row">
     <div class="col-lg-6 col-md-12">
-      <%= link_to user_path(@post_animal.user_id) do %>
-        <%= image_tag @post_animal.get_image,size:"400x400" %>
-      <% end %>
+        <!--画像ポップアップｌ機能-->
+        <%= link_to @post_animal.image, "data-lightbox": @post_animal.image do %>
+          <%= image_tag @post_animal.get_image,size:"400x400" %>
+        <% end %>
       <h4 class="col-4 head-line title_h4 bg-secondary text-white text-center mt-1">投稿内容</h4>
       <p class="h2  text-white bg-dark text-center word-break"><%= @post_animal.caption %></p>
       <div class="mb-3">

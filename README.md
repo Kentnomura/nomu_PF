@@ -34,4 +34,5 @@
 
 ## 使用素材
 - https://fonts.google.com/
-- https://zenn.dev/odentravel/books/e69a157daeecb3/viewer/8879f0
+- https://zenn.dev/odentravel/books/e69a157daeecb3/viewer/8879f0 (deviceのレイアウト)
+- https://qiita.com/weeksmtwtfs737/items/a814c305764b2d664e88 (画像のポップアプ機能)

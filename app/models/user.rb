@@ -35,8 +35,13 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
   def get_profile_image
-    (profile_image.attached?) ? profile_image : 'no_image.jpg'
+    if profile_image.attached?
+      profile_image
+    else
+      'no_image.jpg'
+    end
   end
+
 
   # フォローしたときの処理
   def follow(user_id)
