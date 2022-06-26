@@ -1,6 +1,6 @@
 <% post_animals.each do |post_animal| %>
   <div class="mb-2">
-    <div class="card h-100" style="width: 18rem;">
+    <div class="card h-100" style="width: 17rem;">
       <%= link_to post_animal_path(post_animal.id) do %>  <!--投稿をリンク化-->
         <%= image_tag post_animal.get_image, class: "card-img-top", size: "200x200" %>
         <h5 class="card-title text-dark ml-3">
