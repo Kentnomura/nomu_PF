@@ -34,5 +34,7 @@ Rails.application.routes.draw do
       resources :animal_comments, only: [:destroy]
     end
     resources :users, only: [:show, :edit, :index, :update, :destroy]
+     get "search" => "searches#search"
   end
+  
 end
