@@ -37,22 +37,7 @@
    <div class="col-lg-8 col-md-12 col-sm-12">
       <h2 class="col-lg-12 col-sm-12 head-line title_h2 bg-dark text-white text-center mx-auto">過去の投稿</h2>
       <div class="row row-cols-xl-2 row-cols-md-2 mx-auto">
-        <% @post_animals.each do |post_animal| %>
-          <div class="col mb-2">
-            <div class="card h-100" style="width: 17rem;">
-              <%= link_to admins_post_animal_path(post_animal.id) do %>  <!--投稿をリンク化-->
-                <%= image_tag post_animal.get_image, class: "card-img-top", size: "200x200" %>
-                <h5 class="card-title text-dark ml-3">
-                  <%= post_animal.user.name %>
-                </h5>
-                <div class="card-body text-dark">
-                  <%= post_animal.caption %><br>
-                  <%= post_animal.created_at.strftime('%Y/%m/%d') %>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
+        <%= render "admins/post_animals/index", post_animals: @post_animals %>
       </div>
     </div>
   </div>

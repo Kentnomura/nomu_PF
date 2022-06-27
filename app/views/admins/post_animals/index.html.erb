@@ -5,34 +5,7 @@
   <!--投稿内容-->
 
   <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 mx-auto">
-    <% @post_animals.each do |post_animal| %>
-      <div class="col mb-2">
-        <div class="card h-100" style="width: 17rem;">
-          <%= link_to admins_post_animal_path(post_animal.id), class:"post_index_btn" do %>  <!--投稿をリンク化-->
-            <h5 class="card-title ml-3 text">
-              <div class="row mt-2">
-              <%= image_tag post_animal.user.get_profile_image, size: "50x50", class:"rounded-circle" %>
-              <p class="h4 ml-3 text-dark">
-                <%= post_animal.user.name %>
-              </p>
-              <p class="h6 ml-4 post_index_time">
-                <%= time_ago_in_words(post_animal.created_at)+"前" %>
-              </p>
-              </div>
-            </h5>
-            <div class="card-body">
-              <%= image_tag post_animal.get_image, size: "200x200" %>
-              <p class="text text-dark"><%= post_animal.caption %></p>
-              <div class="d-flex justify-content-end">
-                <div class="post_index_comment">
-                  <i class="far fa-comment"></i><%= post_animal.animal_comments.count %>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+    <%= render "index", post_animals: @post_animals %>
   </div>
 </div>
 
