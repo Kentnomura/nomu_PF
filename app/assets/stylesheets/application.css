@@ -47,3 +47,16 @@ footer {
 .about_btn{
   text-decoration: none !important;
 }
+
+.post_index_btn{
+  text-decoration: none !important;
+}
+
+.post_index_comment{
+  padding-left: 5px;
+}
+
+.post_index_time{
+  color: rgba(17,17,17,0.6);
+}
+

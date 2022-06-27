@@ -13,11 +13,11 @@
       <%= animal_comment.created_at.strftime('%Y/%m/%d') %>
     </th>
     <th>
-        <% if animal_comment.user == current_user %>
-          <%= link_to post_animal_animal_comment_path(post_animal, animal_comment), method: :delete, remote: true, class: "btn btn-danger" do %>
-            <i class="fas fa-trash-alt"></i>
-          <% end %>
+      <% if animal_comment.user == current_user %>
+        <%= link_to post_animal_animal_comment_path(post_animal, animal_comment), method: :delete, remote: true, class: "btn btn-danger" do %>
+          <i class="fas fa-trash-alt"></i>
         <% end %>
+      <% end %>
     </th>
   </tr>
 <% end %>
