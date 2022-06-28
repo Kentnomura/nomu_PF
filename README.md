@@ -23,7 +23,7 @@
 - 動物のいい写真などがあるとき
 
 ## 設計書
-
+- https://convert.diagrams.net/node/export
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -33,6 +33,10 @@
 - IDE：Cloud9
 
 ## 使用素材
-- https://fonts.google.com/
+- https://fonts.google.com/ (フォント)
 - https://zenn.dev/odentravel/books/e69a157daeecb3/viewer/8879f0 (deviceのレイアウト)
 - https://qiita.com/weeksmtwtfs737/items/a814c305764b2d664e88 (画像のポップアプ機能)
+- http://www.netyasun.com/home/color.html(カラーコードー)
+- https://arts-factory.net/rgbatool/(カラーコードー変更)
+- https://qiita.com/Tanesaka/items/74d608d4d1a8a6c0a47a(gest自動削除機能)
+- https://pro-foto.jp/f_28.html(画像)
