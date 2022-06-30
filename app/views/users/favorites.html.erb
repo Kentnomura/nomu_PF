@@ -7,23 +7,35 @@
   <!--いいね一覧-->
   <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2">
     <% @favorite_post_animals.each do |post_animal|%>
-      <div class="col mb-2">
-        <div class="card h-100" style="width: 17rem;">
-          <%= link_to post_animal_path(post_animal.id) do %>
-            <%= image_tag post_animal.get_image, class: "card-img-top", size: "200x200" %>
-            <h5 class="card-title text-dark ml-3">
-              <%= post_animal.caption %>
-            </h5>
-            <div class="card-body text-dark">
-              <div id="favorites_buttons_<%= post_animal.id %>">
-                <%= render "favorites/btn", post_animal: post_animal %>
-              </div>
-              <%= post_animal.user.name %>
-              <%= post_animal.created_at.strftime('%Y/%m/%d') %>
+      <div class="mb-2">
+    <div class="card h-100" style="width: 17rem;">
+      <%= link_to post_animal_path(post_animal.id), class:"post_index_btn" do %>  <!--投稿をリンク化-->
+        <h5 class="card-title ml-3 text">
+          <div class="row mt-2">
+          <%= image_tag post_animal.user.get_profile_image, size: "50x50", class:"rounded-circle" %>
+          <p class="h4 ml-3 text-dark">
+            <%= post_animal.user.name %>
+          </p>
+          <p class="h6 ml-4 post_index_time">
+            <%= time_ago_in_words(post_animal.created_at)+"前" %>
+          </p>
+          </div>
+        </h5>
+        <div class="card-body">
+          <%= image_tag post_animal.get_image, size: "220x220" %>
+          <p class="text text-dark"><%= post_animal.caption %></p>
+          <div class="d-flex justify-content-end">
+            <div id="favorites_buttons_<%= post_animal.id %>">
+              <%= render "favorites/btn", post_animal: post_animal %>
             </div>
-          <% end %>
+            <div class="post_index_comment">
+              <i class="far fa-comment"></i><%= post_animal.animal_comments.count %>
+            </div>
+          </div>
         </div>
-      </div>
+      <% end %>
+    </div>
+  </div>
     <% end %>
   </div>
   <% else %>
