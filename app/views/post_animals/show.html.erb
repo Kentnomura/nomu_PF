@@ -56,9 +56,9 @@
               <div class="btn btn-light"  id="favorites_buttons_<%= @post_animal.id %>">
                 <%= render "favorites/btn", post_animal: @post_animal %>
               </div>
-              <p>
+              <div id="follow_form">
                 <%= render "relationships/follow", post_animal: @post_animal.user %>
-              </p>
+              </div>
             </th>
             <th>
               <%= @post_animal.created_at.strftime('%Y/%m/%d') %>

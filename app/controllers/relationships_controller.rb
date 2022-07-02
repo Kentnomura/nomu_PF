@@ -1,17 +1,19 @@
 class RelationshipsController < ApplicationController
   before_action :authenticate_user!
 
-  
+
   # フォロー
   def create
-    current_user.follow(params[:user_id])
-    redirect_to request.referer
+    @user = current_user.follow(params[:user_id])
+    #@post_animal = PostAnimal.find_by(@user)
+    #redirect_to request.referer
   end
 
   # フォロー外す
   def destroy
-    current_user.unfollow(params[:user_id])
-    redirect_to request.referer
+    @user = current_user.unfollow(params[:user_id])
+    #@post_animal = PostAnimal.find(params[:id])
+    #redirect_to request.referer
   end
 
   # フォロー　一覧
