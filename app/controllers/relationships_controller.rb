@@ -4,16 +4,14 @@ class RelationshipsController < ApplicationController
 
   # フォロー
   def create
-    @user = current_user.follow(params[:user_id])
-    #@post_animal = PostAnimal.find_by(@user)
-    #redirect_to request.referer
+    @user = User.find(params[:user_id])
+    current_user.follow(@user.id)
   end
 
   # フォロー外す
   def destroy
-    @user = current_user.unfollow(params[:user_id])
-    #@post_animal = PostAnimal.find(params[:id])
-    #redirect_to request.referer
+    @user = User.find(params[:user_id])
+    current_user.unfollow(@user.id)
   end
 
   # フォロー　一覧

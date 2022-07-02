@@ -41,9 +41,11 @@
               <% end %>
             </tbody>
           </table>
+          <div id="follow_form">
             <% if @user != current_user %>
               <%= render "relationships/follow", post_animal: @user %>
             <% end %>
+          </div>
             <!--もしuserでログイン中なら-->
             <% if @user.id == current_user.id %>
               <!--なおかつ、userがgesutではなければ-->
