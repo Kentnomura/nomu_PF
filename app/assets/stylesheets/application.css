@@ -60,3 +60,8 @@ footer {
   color: rgba(17,17,17,0.6);
 }
 
+.thumbnail{
+  width: 230px;
+  height: 230px;
+  object-fit: cover;
+}

@@ -8,6 +8,7 @@ class PostAnimal < ApplicationRecord
   validates :caption, presence: true, length: {maximum: 40}
   validates :image, presence: true
 
+
   def get_image
     if image.attached?
       image
@@ -15,6 +16,8 @@ class PostAnimal < ApplicationRecord
       'no_image.jpg'
     end
   end
+
+
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
