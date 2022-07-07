@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followers', as: 'followers'
   end
 
+  get "ranks/index" => "ranks#index"
+
   # 退会確認画面
   get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
   # 論理削除用のルーティング
@@ -36,5 +38,5 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :index, :update, :destroy]
      get "search" => "searches#search"
   end
-  
+
 end

@@ -1,0 +1,33 @@
+<!--配列の1つ目から順に1位、２位と表示される-->
+<% @week_post_animal_favorite_ranks.each.with_index(1) do |post_animal, i| %>
+  第<%= i %>位
+  <div class="mb-2">
+    <div class="card h-100" style="width: 17rem;">
+      <%= link_to post_animal_path(post_animal.id), class:"post_index_btn" do %>  <!--投稿をリンク化-->
+        <h5 class="card-title ml-3 text">
+          <div class="row mt-2">
+          <%= image_tag post_animal.user.get_profile_image, size: "50x50", class:"rounded-circle" %>
+          <p class="h4 ml-3 text-dark">
+            <%= post_animal.user.name %>
+          </p>
+          <p class="h6 ml-4 post_index_time">
+            <%= time_ago_in_words(post_animal.created_at)+"前" %>
+          </p>
+          </div>
+        </h5>
+        <div class="card-body">
+          <%= image_tag post_animal.get_image, class:"thumbnail" %>
+          <p class="text text-dark"><%= post_animal.caption %></p>
+          <div class="d-flex justify-content-end">
+            <div id="favorites_buttons_<%= post_animal.id %>">
+              <%= render "favorites/btn", post_animal: post_animal %>
+            </div>
+            <div class="post_index_comment">
+              <i class="far fa-comment"></i><%= post_animal.animal_comments.count %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

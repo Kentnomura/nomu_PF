@@ -34,6 +34,7 @@ class PostAnimalsController < ApplicationController
     redirect_to post_animals_path
   end
 
+
   private
 
   def post_animal_params
