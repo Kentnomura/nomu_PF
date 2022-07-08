@@ -5,7 +5,7 @@ ja:
         caption: 説明文
         image: 画像
       user:
-        name: 名前
+        name: ニックネーム
         image: 画像
     errors:
       models:
