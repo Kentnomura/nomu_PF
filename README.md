@@ -40,3 +40,4 @@
 - https://arts-factory.net/rgbatool/(カラーコードー変更)
 - https://qiita.com/Tanesaka/items/74d608d4d1a8a6c0a47a(gest自動削除機能)
 - https://pro-foto.jp/f_28.html(画像)
+- https://coco-factory.jp/ugokuweb/move01/7-1-20/(card hover機能)
