@@ -77,3 +77,7 @@ end
 gem 'whenever', require: false
 
 gem "net-smtp"
+
+gem 'net-imap'
+
+gem 'net-pop'
