@@ -75,3 +75,5 @@ group :production do
 end
 
 gem 'whenever', require: false
+
+gem "net-smtp"
